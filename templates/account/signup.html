@@ -11,20 +11,23 @@
 {% block base_top_nav %}{% endblock %}
 
 {% block dont_include_details %}
+
+<link rel="stylesheet" href="{% static 'core/theme/css/loginStyleSheet.css' %}">
+
 <div class="home-btn d-none d-sm-block">
-    <a href="{% url 'website:home' %}" class="text-dark"><i class="fas fa-home h2"></i></a>
+    <a href="{% url 'website:home' %}" class="text-light"><i style="color: white;" class="fas fa-home h2"></i></a>
 </div>
 <div class="account-pages my-5 pt-sm-5">
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-8 col-lg-6 col-xl-5">
-                <div class="card overflow-hidden">
+                <div class="card overflow-hidden" id="mainBlock">
                     <div class="bg-soft-primary">
                         <div class="row">
                             <div class="col-7">
                                 <div class="text-primary p-4">
-                                    <h5 class="text-primary">Free Register</h5>
-                                    <p>Get your free cocognito account now.</p>
+                                    <h5 style="color: white;">Free Register</h5>
+                                    <p style="color: white;">Get your free Pak E-Post account now.</p>
                                 </div>
                             </div>
                         </div>
@@ -34,7 +37,7 @@
                             <a href="{% url 'website:home' %}">
                                 <div class="avatar-md profile-user-wid mb-4">
                                             <span class="avatar-title rounded-circle bg-light">
-                                                <img src="{% static 'core/images/logo_100.png' %}" alt="" class="rounded-circle"
+                                                <img src="{% static 'core/images/truckPNG.png' %}" alt="" class="rounded-circle"
                                                      height="45">
                                             </span>
                                 </div>
@@ -65,47 +68,23 @@
                             </form>
 
                         {% get_providers as socialaccount_providers %}
-                        {% if socialaccount_providers %}
-                                    <hr>
-                                    <ul class="list-unstyled">
-                                        {% for provider in socialaccount_providers %}
-                                            {% if provider.id == "openid" %}
-                                                {% for brand in provider.get_brands %}
-                                                    <li>
-                                                        <a title="{{ brand.name }}"
-                                                           class="socialaccount_provider {{ provider.id }} {{ brand.id }}"
-                                                           href="{% provider_login_url provider.id openid=brand.openid_url process=process %}"
-                                                        >{{ brand.name }}</a>
-                                                    </li>
-                                                {% endfor %}
-                                            {% endif %}
-                                            <li>
-                                                <a class="btn btn-block btn-danger" title="{{ provider.name }}"
-                                                   class="socialaccount_provider {{ provider.id }}"
-                                                   href="{% provider_login_url provider.id process=process scope=scope auth_params=auth_params %}">{{ provider.name }}</a>
-                                            </li>
-                                        {% endfor %}
-                                    </ul>
-                                {% endif %}
 
                         <div class="mt-4 text-center">
-                                    <p class="mb-0">By registering you agree to the Cocognito <a href="#"
+                                    <p class="mb-0">By registering you agree to the Pak E-Post <a href="#"
                                                                                              class="text-primary">Terms
                                         of Use</a></p>
                                 </div>
+                            <div class="mt-5 text-center">
+                                <p>Already have an account ?
+                                    <a href="{% url 'account_login' %}" class="font-weight-medium text-primary">
+                                    Sign in </a></p>
+                            </div>
                         </div>
 
                     </div>
+
                 </div>
-                <div class="mt-5 text-center">
-                        <p>Already have an account ? <a href="{% url 'account_login' %}"
-                                                      class="font-weight-medium text-primary">
-                            Sign in </a></p>
-                        <p>© 2020 - {% now 'Y' %}
-                            <a href="{% url 'website:home' %}" class="text-secondary" target="_blank"> <strong>* </strong></a>.
-                    Design & Develop by
-                    <strong><a class="text-primary" href="https://exarth.com/" target="_blank">Exarth</a></strong></p>
-                    </div>
+
 
             </div>
         </div>

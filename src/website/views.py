@@ -4,7 +4,7 @@ from src.api.models import Parcel
 
 
 class HomeView(TemplateView):
-    template_name = 'website/home.html'
+    template_name = 'website/home_new.html'
 
     def get_context_data(self, **kwargs):
         context = super(HomeView, self).get_context_data(**kwargs)

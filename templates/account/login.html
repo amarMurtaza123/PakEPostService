@@ -11,23 +11,24 @@
 {% block base_top_nav %}{% endblock %}
 
 {% block dont_include_details %}
+<link rel="stylesheet" href="{% static 'core/theme/css/loginStyleSheet.css' %}">
 
     {# HOME LINK #}
-    <div class="home-btn d-none d-sm-block">
-        <a href="{% url 'website:home' %}" class="text-dark"><i class="fas fa-home h2"></i></a>
+    <div class="home-btn d-none d-sm-block" >
+        <a href="{% url 'website:home' %}" class="text-dark"><i style="color: white;" class="fas fa-home h2"></i></a>
     </div>
 
-    <div class="account-pages my-5 pt-sm-5">
-        <div class="container">
+    <div class="account-pages my-5 pt-sm-5" >
+        <div class="container" >
             <div class="row justify-content-center">
                 <div class="col-md-8 col-lg-6 col-xl-5">
-                    <div class="card overflow-hidden">
+                    <div class="card overflow-hidden" id="mainBlock">
                         <div class="bg-soft-primary">
                             <div class="row">
                                 <div class="col-7">
                                     <div class="text-primary p-4">
-                                        <h5 class="text-primary">Welcome Back !</h5>
-                                        <p>Sign in to PakEPost.</p>
+                                        <h5 style="color: white;" >Welcome Back !</h5>
+                                        <p style="color: white;">Sign in to Pak E-Post.</p>
                                     </div>
                                 </div>
                             </div>
@@ -37,7 +38,7 @@
                                 <a href="">
                                     <div class="avatar-md profile-user-wid mb-4">
                                             <span class="avatar-title rounded-circle bg-light">
-                                                <img src="{% static 'core/images/logo_1000.png' %}" alt=""
+                                                <img src="{% static 'core/images/truckPNG.png' %}" alt=""
                                                      class="rounded-circle"
                                                      height="45">
                                             </span>
@@ -82,9 +83,7 @@
                                     {% endif %}
 
                                     <div class="mt-3">
-                                        <button class="btn btn-primary btn-block waves-effect waves-light"
-                                                type="submit">Log In
-                                        </button>
+                                        <button id="btnStyled" type="submit">Log In</button>
                                     </div>
                                 </form>
 
@@ -97,6 +96,8 @@
             </div>
         </div>
     </div>
+
+
 
 {% endblock %}
 
