@@ -114,11 +114,11 @@ class ParcelListView(ListView):
 
 
 class ParcelForm(forms.ModelForm):
-    sender = forms.CharField(label='Sender cnic',
+    sender = forms.CharField(label='Sender CNIC',
                              widget=TextInput(
                                  attrs={'sender': "Sender CNIC", 'type': 'number',
                                         'placeholder': 'Enter CNIC here'}))
-    receiver = forms.CharField(label='Receiver cnic',
+    receiver = forms.CharField(label='Receiver CNIC',
                                widget=TextInput(attrs={'title': "Receiver CNIC", 'type': 'number',
                                                        'placeholder': 'Enter CNIC here'}))
     postal_code = forms.CharField(widget=TextInput(attrs={'type': 'number', 'placeholder': 'Postal code'}))
