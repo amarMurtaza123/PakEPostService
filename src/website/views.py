@@ -1,3 +1,4 @@
+from django.contrib import messages
 from django.views.generic import TemplateView
 
 from src.api.models import Parcel
@@ -13,4 +14,6 @@ class HomeView(TemplateView):
             parcel = Parcel.objects.filter(tracking_id=search)
             if parcel:
                 context['parcel'] = parcel.first()
+            else:
+                messages.error(self.request, 'Parcel not found')
         return context

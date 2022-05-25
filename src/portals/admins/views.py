@@ -1,30 +1,24 @@
+import datetime
 import uuid
-from io import StringIO
 
 import qrcode as qrcode
 from django import forms
 from django.contrib import messages
 from django.contrib.auth import get_user_model
 from django.contrib.auth.decorators import user_passes_test, login_required
-from django.contrib.auth.forms import UserCreationForm
-from django.core.files.uploadedfile import InMemoryUploadedFile
 from django.db import IntegrityError
 from django.forms import TextInput
 from django.http import JsonResponse
 from django.shortcuts import render, redirect
-from django.urls import reverse_lazy
 from django.utils.decorators import method_decorator
 from django.views import View
 from django.views.decorators.cache import never_cache
 from django.views.generic import (
-    TemplateView,
-    ListView,
-    UpdateView)
-from core.settings import LINUX
+    ListView)
 
 from core.settings import BASE_DIR
-from src.api.models import Parcel, PostOffice
-import datetime
+from core.settings import LINUX
+from src.api.models import Parcel
 
 User = get_user_model()
 
@@ -123,10 +117,10 @@ class ParcelForm(forms.ModelForm):
     sender = forms.CharField(label='Sender cnic',
                              widget=TextInput(
                                  attrs={'sender': "Sender CNIC", 'type': 'number',
-                                        'placeholder': 'Enter cnic here'}))
+                                        'placeholder': 'Enter CNIC here'}))
     receiver = forms.CharField(label='Receiver cnic',
                                widget=TextInput(attrs={'title': "Receiver CNIC", 'type': 'number',
-                                                       'placeholder': 'Enter cnic here'}))
+                                                       'placeholder': 'Enter CNIC here'}))
     postal_code = forms.CharField(widget=TextInput(attrs={'type': 'number', 'placeholder': 'Postal code'}))
 
     def __init__(self, *args, **kwargs):
@@ -261,6 +255,9 @@ class AddUserView(View):
         city = request.POST.get('city')
 
         if phone and name and cnic and address:
+            if len(cnic) > 13:
+                messages.error(request, "CNIC cannot be greater than 13 digits")
+
             if not email:
                 email = f"{cnic}@gmail.com"
 

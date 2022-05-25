@@ -11,30 +11,31 @@
 
     {# SAME FOR ALL #}
 
-<style>
-h4{
-    color: white;
-}
-    body{
-        background: rgb(31,31,31);
-        background: linear-gradient(90deg, rgba(31,31,31,1) 0%, rgba(71,67,67,1) 50%, rgba(31,31,31,1) 100%);
-}
+    <style>
+        h4 {
+            color: white;
+        }
 
-body::-webkit-scrollbar {
-    width: 8px;
-    height: 8px;
-}
+        body {
+            background: rgb(31, 31, 31);
+            background: linear-gradient(90deg, rgba(31, 31, 31, 1) 0%, rgba(71, 67, 67, 1) 50%, rgba(31, 31, 31, 1) 100%);
+        }
 
-    body::-webkit-scrollbar-track {
-        background-color: #222222;
-    }
+        body::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
 
-    body::-webkit-scrollbar-thumb {
-        background-color: #FEC506;
-        outline: 1px solid black;
-        border-radius: 5px;
-    }
-</style>
+        body::-webkit-scrollbar-track {
+            background-color: #222222;
+        }
+
+        body::-webkit-scrollbar-thumb {
+            background-color: #FEC506;
+            outline: 1px solid black;
+            border-radius: 5px;
+        }
+    </style>
 
     <div class="row justify-content-center">
         <div class="col-sm-8">
@@ -114,37 +115,40 @@ body::-webkit-scrollbar {
             let checking_sender = true;
 
             sender.blur(function () {
+                if ($(this).val() === '')
+                    return;
+
                 checking_sender = true;
                 if ($(this).val() === $(receiver).val()) {
                     $(sender)[0].setCustomValidity("Sender and Receiver cannot be same!");
                     $(sender)[0].reportValidity();
                     $(sender)[0].style.borderColor = "red";
                     $(sender).val('');
-                    sender.focus();
                     return;
                 }
                 get_c_api_call_user_exists('/a/json/user/' + $(this).val() + '/exists/')
             });
 
             postal_code.blur(function () {
+                if ($(this).val() === '')
+                    return;
                 $.get('/a/json/city/' + $(this).val() + '/exists/', function (data) {
                     if (data.flag === true) {
 
                     } else {
-                        postal_code.focus();
-
                     }
                 });
             });
 
             receiver.blur(function () {
+                if ($(this).val() === '')
+                    return;
                 checking_sender = false;
                 if ($(this).val() === $(sender).val()) {
                     $(receiver)[0].setCustomValidity("Sender and Receiver cannot be same!");
                     $(receiver)[0].reportValidity();
                     $(receiver)[0].style.borderColor = "red";
                     $(receiver).val('');
-                    receiver.focus();
                     return;
                 }
                 get_c_api_call_user_exists('/a/json/user/' + $(this).val() + '/exists/')
@@ -176,7 +180,6 @@ body::-webkit-scrollbar {
                         sender_hint.style.color = "red";
                         sender_hint.innerHTML = "User not available with this cnic!";
                         $(sender).val('');
-                        sender.focus()
                     } else {
                         $(receiver)[0].setCustomValidity("User not available with this cnic!");
                         $(receiver)[0].reportValidity();
@@ -184,7 +187,6 @@ body::-webkit-scrollbar {
                         receiver_hint.style.color = "red";
                         receiver_hint.innerHTML = "User not available with this cnic!";
                         $(receiver).val('');
-                        receiver.focus()
                     }
 
                 }
