@@ -8,7 +8,30 @@
 
 
 {% block content %}
+<style>
+h4{
+    color: white;
+}
+    body{
+        background: rgb(31,31,31);
+        background: linear-gradient(90deg, rgba(31,31,31,1) 0%, rgba(71,67,67,1) 50%, rgba(31,31,31,1) 100%);
+}
 
+body::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+    body::-webkit-scrollbar-track {
+        background-color: #222222;
+    }
+
+    body::-webkit-scrollbar-thumb {
+        background-color: #FEC506;
+        outline: 1px solid black;
+        border-radius: 5px;
+    }
+</style>
     {# SAME FOR ALL #}
     <div class="row justify-content-center">
         <div class="col-6">

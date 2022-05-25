@@ -2,6 +2,15 @@
 {#{% load notifications_tags %}#}
 
 {# MAIN HEADER ------------------------------------------------------------------------------------------------------ #}
+<style>
+    a{
+        color: white;
+        fontweight: bold;
+    }
+
+</style>
+
+
 <header id="page-topbar">
     <div class="navbar-header">
 
@@ -26,7 +35,7 @@
                     </span>
                 </a>
             </div>
-            <h5 class="align-bottom mt-auto mb-auto" style="color: white">Pak-E-Post</h5>
+            <h5 class="align-bottom mt-auto mb-auto" style="color: white">Pak E-Post</h5>
 
             <button type="button" class="btn btn-sm px-3 font-size-16 d-lg-none header-item waves-effect waves-light"
                     data-toggle="collapse" data-target="#topnav-menu-content">
@@ -38,50 +47,39 @@
         {# RIGHT HEAD ------------------ #}
         <div class="d-flex">
 
-            {# FULL_SCREEN -------------------------------------------------------- #}
+            <a style="margin-top: 20px;" class="nav-link" href="{% url 'admins:dashboard' %}">
+                <span><i class="bx bx-home-circle mr-2"></i>Dashboard</span>
+            </a>
 
-            <div class="dropdown d-none d-lg-inline-block ml-1">
-                <button type="button" class="btn header-item noti-icon waves-effect" data-toggle="fullscreen">
-                    <i class="bx bx-fullscreen"></i>
-                </button>
-            </div>
 
-            {# NOTIFICATIONS ------------------------------------------------------ #}
+            {% if request.user.is_superuser %}
+                <a style="margin-top: 20px;" class="nav-link dropdown-toggle arrow-none" href="{% url 'admins:parcel' %}">
+                    <i class="bx bx-box mr-2"></i>Parcels
+                </a>
+            {% else %}
+                <a style="margin-top: 20px;" class="nav-link dropdown-toggle arrow-none" href="{% url 'customer:parcel' %}">
+                    <i class="bx bx-box mr-2"></i>Parcels
+                </a>
+            {% endif %}
 
-            <div class="dropdown d-inline-block">
-                <button type="button" class="btn header-item noti-icon waves-effect"
-                        id="page-header-notifications-dropdown"
-                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    <i class="bx bx-bell bx-tada"></i>
-                    <span class="badge badge-dark badge-pill">
-{#                        {% live_notify_badge %}#}
-                    </span>
-                </button>
-                <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right p-0"
-                     aria-labelledby="page-header-notifications-dropdown">
-                    <div class="p-3">
-                        <div class="row align-items-center">
-                            <div class="col">
-                                <h6 class="m-0"> Notifications </h6>
-                            </div>
-                            <div class="col-auto">
-                                <a href="#" class="small"> View All</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div data-simplebar style="max-height: 300px;">
-                        <div id="notify_me_now">
+            {% if request.user.is_superuser %}
+                <a style="margin-top: 20px;" class="nav-link dropdown-toggle arrow-none" href="/a/user/customers/">
+                    <i class='bx bxs-user'></i> Customers
+                </a>
+            {% endif %}
 
-                        </div>
-                        <div class="p-2 border-top text-center">
-                            <button class="btn text-primary small" onclick="unread_all_notifications()">
-                                <i class="mdi mdi-arrow-right-circle mr-1"></i> Mark All as Read
-                            </button>
-                        </div>
-                    </div>
-                </div>
+            {% if request.user.is_superuser %}
+                <a style="margin-top: 20px;" class="nav-link" href="/a/user/managers/">
+                    <i class='bx bx-server'></i> Service Managers
+                </a>
+            {% endif %}
 
-            </div>
+            {% if request.user.is_superuser %}
+                <a style="margin-top: 20px;" class="nav-link" href="/a/user/postmen/">
+                   <i class='bx bxs-user-badge'></i> Postmen
+                </a>
+            {% endif %}
+
 
             {# USER ONLINE -------------------------------------------------------- #}
 
@@ -90,7 +88,7 @@
                         data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 
                     {% if request.user.profile_image %}
-                        <img class="rounded-circle header-profile-user" src="{{ request.user.profile_image.url }}"
+                        <img class="rounded-circle header-profile-user" src='{{ request.user.profile_image.url }}'
                              alt="Header Avatar">
                     {% else %}
                         <img class="rounded-circle header-profile-user" src="{% static 'core/images/no-user.png' %}">
@@ -132,17 +130,3 @@
 </header>
 
 {# SUB HEADER ------------------------------------------------------------------------------------------------------- #}
-<div class="topnav">
-    <div class="container-fluid">
-        <nav class="navbar navbar-light navbar-expand-lg topnav-menu">
-
-            <div class="collapse navbar-collapse" id="topnav-menu-content">
-                <ul class="navbar-nav">
-
-                    {% include 'core/include/admin_header.html' %}
-
-                </ul>
-            </div>
-        </nav>
-    </div>
-</div>

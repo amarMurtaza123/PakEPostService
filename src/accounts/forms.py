@@ -14,8 +14,8 @@ class UserProfileForm(ModelForm):
 
 
 class MyCustomSignupForm(SignupForm):
-    cnic = forms.CharField(help_text="", required=True,
-                           widget=forms.TextInput(attrs={'placeholder': 'CNIC'}))
+    cnic = forms.CharField(help_text="13-digit input expected", required=True,
+                           widget=forms.NumberInput(attrs={'placeholder': 'CNIC'}))
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
@@ -26,3 +26,10 @@ class MyCustomSignupForm(SignupForm):
         user.cnic = request.POST.get('cnic')
         user.save()
         return user
+
+    def clean(self):
+        cnic = self.cleaned_data['cnic']
+        if len(cnic) > 13:
+            raise forms.ValidationError("CNIC cannot be greater than 13 digits")
+        else:
+            return self.cleaned_data

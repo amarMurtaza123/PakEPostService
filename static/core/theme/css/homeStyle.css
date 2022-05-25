@@ -1,36 +1,30 @@
 body {
     font-family: 'Ubuntu', sans-serif;
-    background: rgb(31, 31, 31);
-    background: linear-gradient(90deg, rgba(31, 31, 31, 1) 0%, rgba(71, 67, 67, 1) 50%, rgba(31, 31, 31, 1) 100%);
+    background: rgb(31,31,31);
+background: linear-gradient(90deg, rgba(31,31,31,1) 0%, rgba(71,67,67,1) 50%, rgba(31,31,31,1) 100%);
 }
-
-p {
+p{
     color: white;
 }
-
-#bdy, #bdy1 {
+#bdy, #bdy1{
     color: white !important;
     background: #525050;
 }
-
-#home, footer {
-    background: rgb(31, 31, 31);
-    background: linear-gradient(90deg, rgba(31, 31, 31, 1) 0%, rgba(71, 67, 67, 1) 50%, rgba(31, 31, 31, 1) 100%);
+#home, footer{
+background: rgb(31,31,31);
+background: linear-gradient(90deg, rgba(31,31,31,1) 0%, rgba(71,67,67,1) 50%, rgba(31,31,31,1) 100%);
 }
-
-footer a {
+footer a{
     font-weight: bold;
     text-decoration: none;
     color: white !important;
 }
-
 h1, h2 {
     color: forestgreen;
     font-weight: bold;
     -webkit-text-stroke: black 1px;
 }
-
-#h3green {
+#h3green{
     color: forestgreen;
 }
 
@@ -48,7 +42,7 @@ span {
 
 .title:hover {
     transition: 0.2s;
-    transform: scale(1.1, 1.1);
+    transform: scale(1.1,1.1);
 }
 
 #frame {
@@ -68,36 +62,36 @@ span {
     align-items: center;
     justify-content: center;
     text-decoration: none !important;
-    border: 1px solid rgba(0, 0, 0, 0);
+    border: 1px solid rgba(0,0,0,0);
     transition: transform 0.5s;
 }
 
-.twt i {
-    font-size: 20px;
-    transition: transform 0.5s;
-}
+    .twt i {
+        font-size: 20px;
+        transition: transform 0.5s;
+    }
 
-.twt:hover {
-    box-shadow: inset 4px 4px 6px -1px rgba(0, 0, 0, 0.2), inset -4px -4px 6px -1px rgba(255, 255, 255, 0.7), inset -0.5px -0.5px 0px rgba(255, 255, 255, 1), inset 0.5px 0.5px 0px rgba(255, 255, 255, 0.15), inset 0px 12px 10px -10px rgba(255, 255, 255, 0.05);
-    border: 1px solid rgba(0, 0, 0, 0.01);
-    transform: translateY(2px);
-}
+    .twt:hover {
+        box-shadow: inset 4px 4px 6px -1px rgba(0,0,0,0.2), inset -4px -4px 6px -1px rgba(255,255,255,0.7), inset -0.5px -0.5px 0px rgba(255,255,255,1), inset 0.5px 0.5px 0px rgba(255,255,255,0.15), inset 0px 12px 10px -10px rgba(255,255,255,0.05);
+        border: 1px solid rgba(0,0,0,0.01);
+        transform: translateY(2px);
+    }
 
-.twt:hover i {
-    transform: scale(0.90);
-}
+        .twt:hover i {
+            transform: scale(0.90);
+        }
 
-.twt:hover .fa-facebook {
-    color: #3b5998;
-}
+        .twt:hover .fa-facebook {
+            color: #3b5998;
+        }
 
-.twt:hover .fa-twitter {
-    color: #00acee;
-}
+        .twt:hover .fa-twitter {
+            color: #00acee;
+        }
 
-.twt:hover .fa-instagram {
-    color: #f14843;
-}
+        .twt:hover .fa-instagram {
+            color: #f14843;
+        }
 
 
 body::-webkit-scrollbar {
@@ -105,12 +99,35 @@ body::-webkit-scrollbar {
     height: 8px;
 }
 
-body::-webkit-scrollbar-track {
-    background-color: #222222;
+    body::-webkit-scrollbar-track {
+        background-color: #222222;
+    }
+
+    body::-webkit-scrollbar-thumb {
+        background-color: #FEC506;
+        outline: 1px solid black;
+        border-radius: 5px;
+    }
+
+
+    #btnStyled {
+    outline: none;
+    padding: 3px 40px 3px 40px;
+    cursor: pointer;
+    border-radius: 5em;
+    color: black;
+    background: linear-gradient(to right, #e1ad01, #FEC506);
+    border: 0;
+    text-align: center;
+    font-family: 'Ubuntu', sans-serif;
+    font-weight: bold;
+    font-size: 20px;
+    box-shadow: 0 0 20px 1px rgba(0, 0, 0, 0.04);
+    transition: 0.3s;
+    width: 100%;
 }
 
-body::-webkit-scrollbar-thumb {
-    background-color: #FEC506;
-    outline: 1px solid black;
-    border-radius: 5px;
-}
+    #btnStyled:hover {
+
+            box-shadow: inset 8px 8px 8px #896d10, inset -12px -12px 12px #e7ba24;
+    }

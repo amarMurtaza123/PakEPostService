@@ -5,7 +5,27 @@
 {% block base_title %} Profile Update {% endblock %}
 
 {% block content %}
+    <style>
+        body {
+            background: rgb(31, 31, 31);
+            background: linear-gradient(90deg, rgba(31, 31, 31, 1) 0%, rgba(71, 67, 67, 1) 50%, rgba(31, 31, 31, 1) 100%);
+        }
 
+        body::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+
+        body::-webkit-scrollbar-track {
+            background-color: #222222;
+        }
+
+        body::-webkit-scrollbar-thumb {
+            background-color: #FEC506;
+            outline: 1px solid black;
+            border-radius: 5px;
+        }
+    </style>
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
@@ -13,9 +33,11 @@
 
                     <div class="mb-2 text-center">
                         {% if form.instance.profile_image %}
-                            <img src="{{ form.instance.profile_image.url }}" style='height: 150px;width: 150px;' class="rounded-circle">
+                            <img src="{{ form.instance.profile_image.url }}" style='height: 150px;width: 150px;'
+                                 class="rounded-circle">
                         {% else %}
-                            <img src="{% static 'images/user.png' %}" style='height: 150px;width: 150px;' class="rounded-circle">
+                            <img src="{% static 'images/user.jpg' %}" style='height: 150px;width: 150px;'
+                                 class="rounded-circle">
                         {% endif %}
                     </div>
                     <hr>

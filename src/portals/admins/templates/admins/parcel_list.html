@@ -10,7 +10,30 @@
 {% endblock %}
 
 {% block content %}
+<style>
+h4{
+    color: white;
+}
+    body{
+        background: rgb(31,31,31);
+        background: linear-gradient(90deg, rgba(31,31,31,1) 0%, rgba(71,67,67,1) 50%, rgba(31,31,31,1) 100%);
+}
 
+body::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+    body::-webkit-scrollbar-track {
+        background-color: #222222;
+    }
+
+    body::-webkit-scrollbar-thumb {
+        background-color: #FEC506;
+        outline: 1px solid black;
+        border-radius: 5px;
+    }
+</style>
     <div class="row mb-2">
         <div class="col">
             <a href="{% url 'admins:add-parcel' %}" class="btn btn-primary">Add New Parcel</a>
