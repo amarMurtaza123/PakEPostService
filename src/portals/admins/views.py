@@ -266,7 +266,7 @@ class AddUserView(View):
                     username=cnic, cnic=cnic, email=email, address=address, password=f'default@password',
                     is_active=True, is_customer=True, first_name=name, city=city
                 )
-                send_email.send_email(user, 'Your account has been created with above information')
+                # send_email.send_email(user, 'Your account has been created with above information')
                 messages.success(request, f"New user {user.first_name} created successfully")
             except IntegrityError:
                 messages.error(request, "Username email and cnic must be unique")
